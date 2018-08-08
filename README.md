@@ -73,16 +73,14 @@ $ python main.py --mode train --main_path fer --image_dir fer/ckplus/data/ck_ali
 
 ## Results
 #### Accuracy
-<center>
   
 | fold    | 0     | 1      | 2     | 3     | 4     | 5     | 6     | 7     | 8     | 9     |
 | :-----: |:-----:| :-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
 | acc(%)  | 94.29 |  100   | 97.14 | 100   |  100  |  100  |  100  | 90.63 | 86.67 |  100  |
 
-</center>
+</br>
 
 #### Confusion matrix
-<center>
   
 | True\Pred| Anger | Contempt|Disgust| Fear | Happy| Sadness| Surprise |
 | :-----: |:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
@@ -94,10 +92,10 @@ $ python main.py --mode train --main_path fer --image_dir fer/ckplus/data/ck_ali
 | Sadness  |     |  3.57  |  |  ||  92.86  | 3.57 | 
 | Surprise  |      |  1.20   |  |  |  1.20  | 1.20  |  96.39 |
 
-</center>
 <br/>
+
 #### Qualitative results
-<p align="center"><img width="70%" src="png/sample.png"/></p>
+<img width="70%" src="png/sample.png"/>
 
 <br/>
 
