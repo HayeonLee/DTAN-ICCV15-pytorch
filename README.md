@@ -29,7 +29,7 @@ $ python preprocessing/face_alignment.py
 ### 3. Downloading pretrained model
 Download [the pretrained model checkpoint](https://drive.google.com/open?id=1F8zDsrGumdPHJdrZvEvPxM2A1qUCatGJ) to test the model as 10 cross-fold validation
 ```bash
-$ unzip ckplus -d face-expression-classification/data
+$ unzip ckplus -d face-expression-classification
 ```
 
 ### 4. Testing
@@ -47,11 +47,11 @@ $ python main.py --mode valid --image_dir cacd2000_224 --crop_size 224 --image_s
 
 ### 5. Training
 ```bash
-$ python main.py --mode valid --image_dir cacd2000_224 --crop_size 224 --image_size 224 \
-                 --gpu_ids 0 --batch_size 64 --pretrain True --log_dir cacd2000_cls/logs \
-                 --model_save_dir cacd2000_cls/models --result_dir cacd2000_cls/results
+$ python main.py --mode valid --main_path --image_dir cacd2000_224 --crop_size 64 --image_size 64 \
+                 --batch_size 32 --restore true --model_name Nthfold \
+                 --use_visdom False
 ```
-
+N: 0~9
 
 
 ## Results
