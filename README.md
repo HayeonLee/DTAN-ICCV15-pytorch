@@ -1,5 +1,5 @@
 ## Face age classification
-Resnet50 based simple deep learning model to classifiy face age(generation) on dataset Cross-Age Celebrity Dataset (CACD)
+PyTorch implementation of [DTGN(ICCV2015)](https://ieeexplore.ieee.org/document/7410698/) to recognize face expression on dataset CK+
 
 <br/>
 
