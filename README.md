@@ -6,6 +6,8 @@ PyTorch implementation of [DTGN[ICCV2015]](https://ieeexplore.ieee.org/document/
 ## Dependencies
 * [Python 3.5+](https://www.continuum.io/downloads)
 * [PyTorch 0.4.0](http://pytorch.org/)
+* [Visdom](https://github.com/facebookresearch/visdom)
+* [OpenCV](https://opencv.org/)
 
 <br/>
 
@@ -42,28 +44,24 @@ $ unzip ckplus -d fer/ckplus
 ### 4. Testing
 ```bash
 $ python main.py --mode valid --main_path fer --image_dir fer/ckplus/data/ck_align \
-                 --emotion_dir fer/ckplus/data/Emotion --model_name Nthfold \ 
+                 --emotion_dir fer/ckplus/data/Emotion \
+                 --model_name Nthfold --ithfold N\ 
                  --crop_size 64 --image_size 64 --batch_size 32 \
                  --restore true --use_visdom False
 ```
 N: 0~9
 result images will be saved under *fer/ckplus/models/Nthfold/results*
 
-### 4. Testing
-Test your own model </br>
-
-Test pretrained model using chekpoints
+### 5. Training
 ```bash
-$ python main.py --mode valid --image_dir cacd2000_224 --crop_size 224 --image_size 224 \
-                 --gpu_ids 0 --batch_size 64 --pretrain False --log_dir cacd2000_cls/logs \
-                 --model_save_dir cacd2000_cls/models --result_dir cacd2000_cls/results \
-                 --resume_iters 104000
+$ python main.py --mode train --main_path fer --image_dir fer/ckplus/data/ck_align \
+                 --emotion_dir fer/ckplus/data/Emotion \
+                 --model_name MODEL_NAME --ithfold N\ 
+                 --crop_size 64 --image_size 64 --batch_size 32 \
+                 --use_visdom True
 ```
 
 <br/>
-
-
-
 
 ## Results
 
@@ -75,8 +73,7 @@ $ python main.py --mode valid --image_dir cacd2000_224 --crop_size 224 --image_s
 <br/>
 
 ## Reference
-I refer code and readme template of [StarGAN](https://github.com/yunjey/StarGAN.git)<br/>
-[StarGAN: Unified Generative Adversarial Networks for Multi-Domain Image-to-Image Translation](https://arxiv.org/abs/1711.09020) <br/>
-Yunjey Choi et al. IEEE Conference on Computer Vision and Pattern Recognition, 2018
+[DTAN of Joint fine-tuning in deep neural networks for facial expression recognition](https://ieeexplore.ieee.org/document/7410698/) <br/> JUNG, Heechul, et al. In: Proceedings of the IEEE International Conference on Computer Vision. 2015. p. 2983-2991.
+[Face alignment code](https://www.pyimagesearch.com/2017/05/22/face-alignment-with-opencv-and-python/)
 
 <br/>
