@@ -14,13 +14,19 @@ PyTorch implementation of [DTGN[ICCV2015]](https://ieeexplore.ieee.org/document/
 ### 1. Cloning the repository
 ```bash
 $ git clone https://github.com/HayeonLee/fer.git
-$ cd fer/
+$ cd fer
 ```
 
 ### 2. Downloading & Preprocessing the dataset
 (1) Download [Cohn-Kanade (CK+) dataset](http://www.consortium.ri.cmu.edu/ckagree/) <br/>
 (2) Move *cohn-kanade-images* directory to *fer/data/cohn-kanade-images* <br/>
+```bash
+$ mv cohn-kanade-images fer/data/cohn-kanade-images
+```
 (3) Move *Emotion* directory to *fer/data/Emotion* <br/>
+```bash
+$ mv Emotion fer/data/Emotion
+```
 (4) Perform preprocessing to crop and align images
 ```bash
 $ python preprocessing/face_alignment.py
