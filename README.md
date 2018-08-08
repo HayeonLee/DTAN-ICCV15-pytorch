@@ -73,12 +73,12 @@ $ python main.py --mode train --main_path fer --image_dir fer/ckplus/data/ck_ali
 
 ## Results
 <center>
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
- </center>
+  
+| fold    | 0     | 1      | 2     | 3     | 4     | 5     | 6     | 7     | 8     | 9     |
+| :-----: |:-----:| :-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
+| acc(%)  | 94.29 |  100   | 97.14 | 100   |  100  |  100  |  100  | 90.63 | 86.67 |  100  |
+
+</center>
 
 <br/>
 
