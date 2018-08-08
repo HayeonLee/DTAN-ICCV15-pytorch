@@ -17,13 +17,14 @@ $ git clone https://github.com/HayeonLee/face-expression-classification.git
 $ cd face-expression-classification/
 ```
 
-### 2. Downloading the dataset
+### 2. Downloading&Preprocessing the dataset
 (1) Download [Cohn-Kanade (CK+) dataset](http://www.consortium.ri.cmu.edu/ckagree/) <br/>
-(2) Divide images into each generation [10s/20s/30s/40s/50s/60s] 
-    (I used regular experssion)<br/>
-(3) For each generation, divide images into train and test dataset 
-    (I used 10% of images of each generation as the test images)<br/>
-(4) Move dataset to cacd2000_224 folder by refering the folder structure 
+(2) Move cohn-kanade-images under face-expression-classification/data/
+(3) Perform preprocessing to crop and align images
+```bash
+$ cd preprocessing
+$ python face_alignment.py
+```
 
 ### 3. Training
 ```bash
