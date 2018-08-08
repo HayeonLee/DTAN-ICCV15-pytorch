@@ -36,8 +36,18 @@ $ python preprocessing/face_alignment.py
 ### 3. Downloading pretrained model
 Download [the pretrained model checkpoint](https://drive.google.com/open?id=1F8zDsrGumdPHJdrZvEvPxM2A1qUCatGJ) to test the model as 10 cross-fold validation
 ```bash
-$ unzip ckplus -d fer/
+$ unzip ckplus -d fer/ckplus
 ```
+
+### 4. Testing
+```bash
+$ python main.py --mode valid --main_path fer --image_dir fer/ckplus/data/ck_align \
+                 --emotion_dir fer/ckplus/data/Emotion --model_name Nthfold \ 
+                 --crop_size 64 --image_size 64 --batch_size 32 \
+                 --restore true --use_visdom False
+```
+N: 0~9
+result images will be saved under *fer/ckplus/models/Nthfold/results*
 
 ### 4. Testing
 Test your own model </br>
@@ -52,14 +62,7 @@ $ python main.py --mode valid --image_dir cacd2000_224 --crop_size 224 --image_s
 
 <br/>
 
-### 5. Training
-```bash
-$ python main.py --mode valid --main_path fer --image_dir fer/data/ck_align \
-                 --emotion_dir fer/data/Emotion --model_name Nthfold \ 
-                 --crop_size 64 --image_size 64 --batch_size 32 \
-                 --restore true --use_visdom False
-```
-N: 0~9
+
 
 
 ## Results
