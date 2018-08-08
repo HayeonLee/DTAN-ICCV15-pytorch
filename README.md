@@ -13,23 +13,24 @@ PyTorch implementation of [DTGN[ICCV2015]](https://ieeexplore.ieee.org/document/
 
 ### 1. Cloning the repository
 ```bash
-$ git clone https://github.com/HayeonLee/face-expression-classification.git
-$ cd face-expression-classification/
+$ git clone https://github.com/HayeonLee/fer.git
+$ cd fer/
 ```
 
 ### 2. Downloading & Preprocessing the dataset
 (1) Download [Cohn-Kanade (CK+) dataset](http://www.consortium.ri.cmu.edu/ckagree/) <br/>
-(2) Move *cohn-kanade-images* directory under *face-expression-classification/data/* <br/>
-(3) Perform preprocessing to crop and align images
+(2) Move *cohn-kanade-images* directory to *fer/data/cohn-kanade-images* <br/>
+(3) Move *Emotion* directory to *fer/data/Emotion* <br/>
+(4) Perform preprocessing to crop and align images
 ```bash
 $ python preprocessing/face_alignment.py
 ```
-*cohn-kanade-images_processed* directory will be generated under *data* folder
+*ck_align* directory will be generated under *data* folder
 
 ### 3. Downloading pretrained model
 Download [the pretrained model checkpoint](https://drive.google.com/open?id=1F8zDsrGumdPHJdrZvEvPxM2A1qUCatGJ) to test the model as 10 cross-fold validation
 ```bash
-$ unzip ckplus -d face-expression-classification
+$ unzip ckplus -d fer/
 ```
 
 ### 4. Testing
@@ -47,9 +48,10 @@ $ python main.py --mode valid --image_dir cacd2000_224 --crop_size 224 --image_s
 
 ### 5. Training
 ```bash
-$ python main.py --mode valid --main_path --image_dir cacd2000_224 --crop_size 64 --image_size 64 \
-                 --batch_size 32 --restore true --model_name Nthfold \
-                 --use_visdom False
+$ python main.py --mode valid --main_path fer --image_dir fer/data/ck_align \
+                 --emotion_dir fer/data/Emotion --model_name Nthfold \ 
+                 --crop_size 64 --image_size 64 --batch_size 32 \
+                 --restore true --use_visdom False
 ```
 N: 0~9
 
