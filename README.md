@@ -1,5 +1,5 @@
 ## Face age classification
-PyTorch implementation of [DTGN[ICCV2015]](https://ieeexplore.ieee.org/document/7410698/) to recognize face expression on dataset CK+
+PyTorch implementation of [DTGN(ICCV2015)](https://ieeexplore.ieee.org/document/7410698/) to recognize face expression on dataset CK+
 
 <br/>
 
@@ -73,7 +73,7 @@ $ python main.py --mode train --main_path fer --image_dir fer/ckplus/data/ck_ali
 <br/>
 
 ## Reference
-*[DTAN of Joint fine-tuning in deep neural networks for facial expression recognition](https://ieeexplore.ieee.org/document/7410698/) <br/> JUNG, Heechul, et al. In: Proceedings of the IEEE International Conference on Computer Vision. 2015. p. 2983-2991.<br/>
-*[Face alignment code](https://www.pyimagesearch.com/2017/05/22/face-alignment-with-opencv-and-python/)
+* [[DTAN] Joint fine-tuning in deep neural networks for facial expression recognition](https://ieeexplore.ieee.org/document/7410698/) <br/> JUNG, Heechul, et al. In: Proceedings of the IEEE International Conference on Computer Vision. 2015. p. 2983-2991.<br/>
+* [Face alignment code](https://www.pyimagesearch.com/2017/05/22/face-alignment-with-opencv-and-python/)
 
 <br/>
