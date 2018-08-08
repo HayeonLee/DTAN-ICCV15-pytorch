@@ -24,6 +24,7 @@ $ cd face-expression-classification/
 ```bash
 $ python preprocessing/face_alignment.py
 ```
+cohn-kanade-images_processed directory will be generated under data folder
 
 ### 3. Downloading pretrained model
 Download [the pretrained model checkpoint](https://drive.google.com/open?id=1F8zDsrGumdPHJdrZvEvPxM2A1qUCatGJ) to test the model as 10 cross-fold validation
@@ -31,32 +32,27 @@ Download [the pretrained model checkpoint](https://drive.google.com/open?id=1F8z
 $ unzip ckplus -d face-expression-classification/data
 ```
 
-### 3. Training
-```bash
-$ python main.py --mode train --image_dir cacd2000_224 --crop_size 224 --image_size 224 \
-                 --gpu_ids 0 --batch_size 64 --pretrain True --log_dir cacd2000_cls/logs \
-                 --model_save_dir cacd2000_cls/models --result_dir cacd2000_cls/results
-```
-
-### 5. Testing
-Test your own model
-
-```bash
-$ python main.py --mode test --image_dir cacd2000_224 --crop_size 224 --image_size 224 \
-                 --gpu_ids 0 --batch_size 64 --pretrain False --log_dir YOURFOLDER/logs \
-                 --model_save_dir YOURFOLDER/models --result_dir YOURFOLDER/results \
-                 --resume_iters CHECKPOINTSFILE
-```
+### 4. Testing
+Test your own model </br>
 
 Test pretrained model using chekpoints
 ```bash
-$ python main.py --mode test --image_dir cacd2000_224 --crop_size 224 --image_size 224 \
+$ python main.py --mode valid --image_dir cacd2000_224 --crop_size 224 --image_size 224 \
                  --gpu_ids 0 --batch_size 64 --pretrain False --log_dir cacd2000_cls/logs \
                  --model_save_dir cacd2000_cls/models --result_dir cacd2000_cls/results \
                  --resume_iters 104000
 ```
 
 <br/>
+
+### 5. Training
+```bash
+$ python main.py --mode valid --image_dir cacd2000_224 --crop_size 224 --image_size 224 \
+                 --gpu_ids 0 --batch_size 64 --pretrain True --log_dir cacd2000_cls/logs \
+                 --model_save_dir cacd2000_cls/models --result_dir cacd2000_cls/results
+```
+
+
 
 ## Results
 
