@@ -17,13 +17,18 @@ $ git clone https://github.com/HayeonLee/face-expression-classification.git
 $ cd face-expression-classification/
 ```
 
-### 2. Downloading&Preprocessing the dataset
+### 2. Downloading & Preprocessing the dataset
 (1) Download [Cohn-Kanade (CK+) dataset](http://www.consortium.ri.cmu.edu/ckagree/) <br/>
 (2) Move cohn-kanade-images directory under face-expression-classification/data/ <br/>
 (3) Perform preprocessing to crop and align images
 ```bash
-$ cd preprocessing
-$ python face_alignment.py
+$ python preprocessing/face_alignment.py
+```
+
+### 3. Downloading pretrained model
+Download [the pretrained model checkpoint](https://drive.google.com/open?id=1F8zDsrGumdPHJdrZvEvPxM2A1qUCatGJ) to test the model as 10 cross-fold validation
+```bash
+$ unzip ckplus -d face-expression-classification/data
 ```
 
 ### 3. Training
@@ -31,12 +36,6 @@ $ python face_alignment.py
 $ python main.py --mode train --image_dir cacd2000_224 --crop_size 224 --image_size 224 \
                  --gpu_ids 0 --batch_size 64 --pretrain True --log_dir cacd2000_cls/logs \
                  --model_save_dir cacd2000_cls/models --result_dir cacd2000_cls/results
-```
-
-### 4. Pretrained model
-Download [the pretrained model checkpoint](https://drive.google.com/open?id=1TXfHzTEzWCHhlw1BnuB8LmfOrigMIKo0) to test the model
-```bash
-$ mv 104000.ckpt cacd2000_cls/models/
 ```
 
 ### 5. Testing
