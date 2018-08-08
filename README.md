@@ -13,12 +13,12 @@ PyTorch implementation of [DTGN[ICCV2015]](https://ieeexplore.ieee.org/document/
 
 ### 1. Cloning the repository
 ```bash
-$ git clone https://github.com/HayeonLee/face-age-classification.git
-$ cd face-age-classification/
+$ git clone https://github.com/HayeonLee/face-expression-classification.git
+$ cd face-expression-classification/
 ```
 
 ### 2. Downloading the dataset
-(1) Download [the Cross-Age Celebrity Dataset (CACD) dataset](http://bcsiriuschen.github.io/CARC/) <br/>
+(1) Download [Cohn-Kanade (CK+) dataset](http://www.consortium.ri.cmu.edu/ckagree/) <br/>
 (2) Divide images into each generation [10s/20s/30s/40s/50s/60s] 
     (I used regular experssion)<br/>
 (3) For each generation, divide images into train and test dataset 
