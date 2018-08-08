@@ -18,6 +18,7 @@ PyTorch implementation of [DTGN(ICCV2015)](https://ieeexplore.ieee.org/document/
 $ git clone https://github.com/HayeonLee/fer.git
 $ cd fer
 ```
+<br/>
 
 ### 2. Downloading & Preprocessing the dataset
 (1) Download [Cohn-Kanade (CK+) dataset](http://www.consortium.ri.cmu.edu/ckagree/) <br/>
@@ -34,12 +35,14 @@ $ mv Emotion fer/data/Emotion
 $ python preprocessing/face_alignment.py
 ```
 *ck_align* directory will be generated under *data* folder
+<br/>
 
 ### 3. Downloading pretrained model
 Download [the pretrained model checkpoint](https://drive.google.com/open?id=1F8zDsrGumdPHJdrZvEvPxM2A1qUCatGJ) to test the model as 10 cross-fold validation
 ```bash
 $ unzip ckplus -d fer/ckplus
 ```
+<br/>
 
 ### 4. Testing
 ```bash
@@ -51,6 +54,7 @@ $ python main.py --mode valid --main_path fer --image_dir fer/ckplus/data/ck_ali
 ```
 N: 0~9
 result images will be saved under *fer/ckplus/models/Nthfold/results*
+<br/>
 
 ### 5. Training
 ```bash
