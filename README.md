@@ -19,7 +19,7 @@ $ cd face-expression-classification/
 
 ### 2. Downloading&Preprocessing the dataset
 (1) Download [Cohn-Kanade (CK+) dataset](http://www.consortium.ri.cmu.edu/ckagree/) <br/>
-(2) Move cohn-kanade-images under face-expression-classification/data/ <br/>
+(2) Move cohn-kanade-images directory under face-expression-classification/data/ <br/>
 (3) Perform preprocessing to crop and align images
 ```bash
 $ cd preprocessing
