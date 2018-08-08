@@ -18,6 +18,7 @@ PyTorch implementation of [DTGN(ICCV2015)](https://ieeexplore.ieee.org/document/
 $ git clone https://github.com/HayeonLee/fer.git
 $ cd fer
 ```
+
 <br/>
 
 ### 2. Downloading & Preprocessing the dataset
@@ -35,6 +36,7 @@ $ mv Emotion fer/data/Emotion
 $ python preprocessing/face_alignment.py
 ```
 *ck_align* directory will be generated under *data* folder
+
 <br/>
 
 ### 3. Downloading pretrained model
@@ -42,6 +44,7 @@ Download [the pretrained model checkpoint](https://drive.google.com/open?id=1F8z
 ```bash
 $ unzip ckplus -d fer/ckplus
 ```
+
 <br/>
 
 ### 4. Testing
@@ -54,6 +57,7 @@ $ python main.py --mode valid --main_path fer --image_dir fer/ckplus/data/ck_ali
 ```
 N: 0~9
 result images will be saved under *fer/ckplus/models/Nthfold/results*
+
 <br/>
 
 ### 5. Training
@@ -72,7 +76,6 @@ $ python main.py --mode train --main_path fer --image_dir fer/ckplus/data/ck_ali
 <p align="center"><img width="70%" src="png/125.png"/></p>
 
 <p align="center"><img width="70%" src="png/107.png"/></p>
-
 
 <br/>
 
