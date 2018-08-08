@@ -73,9 +73,7 @@ $ python main.py --mode train --main_path fer --image_dir fer/ckplus/data/ck_ali
 
 ## Results
 
-<p align="center"><img width="70%" src="png/125.png"/></p>
-
-<p align="center"><img width="70%" src="png/107.png"/></p>
+<p align="center"><img width="70%" src="png/sample.png"/></p>
 
 <br/>
 
