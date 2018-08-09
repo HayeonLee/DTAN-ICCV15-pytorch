@@ -39,7 +39,8 @@ $ python preprocessing/face_alignment.py
 *ck_align* directory will be generated under *data* folder
 
 <br/>
-#### Oulu-Casia
+
+#### Oulu-CASIA
 (1) Download [Oulu-CASIA dataset](http://www.cse.oulu.fi/CMV/Downloads/Oulu-CASIA) <br/>
 (2) Move *OriginalImg* directory to *fer/data/OriginalImg* <br/>
 ```bash
