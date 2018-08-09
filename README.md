@@ -63,9 +63,10 @@ $ unzip oulu -d fer/oulu
 <br/>
 
 ### 4. Testing
+#### CK+
 ```bash
 $ python main.py --mode valid --main_path fer --image_dir fer/ckplus/data/ck_align \
-                 --emotion_dir fer/ckplus/data/Emotion \
+                 --emotion_dir fer/ckplus/data/Emotion --cls 7 \
                  --model_name Nthfold --ithfold N\ 
                  --crop_size 64 --image_size 64 --batch_size 32 \
                  --restore true --use_visdom False
@@ -75,16 +76,37 @@ result images will be saved under *fer/ckplus/models/Nthfold/results*
 
 <br/>
 
+#### Oulu-CASIA
+```bash
+$ python main.py --mode valid --main_path fer --image_dir fer/oulu/data/oulu_align \
+                 --emotion_dir None --cls 6 \
+                 --model_name Nthfold --ithfold N\ 
+                 --crop_size 64 --image_size 64 --batch_size 32 \
+                 --restore true --use_visdom False
+```
+
+<br/>
+
 ### 5. Training
+#### CK+
 ```bash
 $ python main.py --mode train --main_path fer --image_dir fer/ckplus/data/ck_align \
-                 --emotion_dir fer/ckplus/data/Emotion \
-                 --model_name MODEL_NAME --ithfold N\ 
+                 --emotion_dir fer/ckplus/data/Emotion --cls 7 \
+                 --model_name MODEL_NAME --ithfold N \ 
                  --crop_size 64 --image_size 64 --batch_size 32 \
                  --use_visdom True
 ```
 
 <br/>
+
+#### Oulu-CASIA
+```bash
+$ python main.py --mode train --main_path fer --image_dir fer/oulu/data/oulu_align \
+                 --emotion_dir None --cls 6 \
+                 --model_name MODEL_NAME --ithfold N\ 
+                 --crop_size 64 --image_size 64 --batch_size 32 \
+                 --use_visdom True
+```
 
 ## Results
 ### CK+ Dataset
