@@ -72,6 +72,35 @@ $ python main.py --mode train --main_path fer --image_dir fer/ckplus/data/ck_ali
 <br/>
 
 ## Results
+### CK+ Dataset
+#### Accuracy
+  
+| fold    | 0     | 1      | 2     | 3     | 4     | 5     | 6     | 7     | 8     | 9     |
+| :-----: |:-----:| :-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
+| acc(%)  | 94.29 |  100   | 97.14 | 100   |  100  |  100  |  100  | 90.63 | 86.67 |  100  |
+
+</br>
+
+#### Confusion matrix
+  
+| True\Pred| Anger | Contempt|Disgust| Fear | Happy| Sadness| Surprise |
+| :-----: |:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
+| Anger | 97.78|    |    |     |     |     | 2.22 |     | 
+| Contempt |      |  100   |     |      |     |     |     |     | 
+| Disgust  |     |     |100 |     |     |     |     |    | 
+| Fear |     |        | 4.00 | 88.00 |      | 4.00  | 4.00 | 
+| Happy  |      |  | 1.45 | | 98.55|  |    | | 
+| Sadness  |     |  3.57  |  |  ||  92.86  | 3.57 | 
+| Surprise  |      |  1.20   |  |  |  1.20  | 1.20  |  96.39 |
+
+<br/>
+
+#### Qualitative results
+<img width="70%" src="png/sample.png"/>
+
+<br/>
+
+### Oulu-Casia Dataset
 #### Accuracy
   
 | fold    | 0     | 1      | 2     | 3     | 4     | 5     | 6     | 7     | 8     | 9     |
