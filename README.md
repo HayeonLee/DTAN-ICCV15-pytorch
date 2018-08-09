@@ -55,6 +55,15 @@ $ python preprocessing/face_alignment.py
 <br/>
 
 ### 3. Downloading pretrained model
+#### CK+
+Download [the pretrained model checkpoint](https://drive.google.com/open?id=1F8zDsrGumdPHJdrZvEvPxM2A1qUCatGJ) to test the model as 10 cross-fold validation
+```bash
+$ unzip oulu -d fer/oulu
+```
+
+<br/>
+
+#### Oulu-CASIA
 Download [the pretrained model checkpoint](https://drive.google.com/open?id=1OlHBYWyiiKah66G8c-ap0ni4Mc4Fsys4) to test the model as 10 cross-fold validation
 ```bash
 $ unzip oulu -d fer/oulu
@@ -107,6 +116,7 @@ $ python main.py --mode train --main_path fer --image_dir fer/oulu/data/oulu_ali
                  --crop_size 64 --image_size 64 --batch_size 32 \
                  --use_visdom True
 ```
+<br/>
 
 ## Results
 ### CK+ Dataset
