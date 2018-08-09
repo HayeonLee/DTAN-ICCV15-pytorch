@@ -53,6 +53,7 @@ $ python preprocessing/face_alignment.py
 *oulu_align* directory will be generated under *data* folder
 
 <br/>
+
 ### 3. Downloading pretrained model
 Download [the pretrained model checkpoint](https://drive.google.com/open?id=1OlHBYWyiiKah66G8c-ap0ni4Mc4Fsys4) to test the model as 10 cross-fold validation
 ```bash
