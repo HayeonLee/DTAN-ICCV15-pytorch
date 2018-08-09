@@ -123,7 +123,7 @@ $ python main.py --mode train --main_path fer --image_dir fer/ckplus/data/ck_ali
 <br/>
 
 #### Qualitative results
-<img width="70%" src="png/sample.png"/>
+<img width="70%" src="png/sample_oulu.png"/>
 
 <br/>
 
