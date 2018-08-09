@@ -111,15 +111,14 @@ $ python main.py --mode train --main_path fer --image_dir fer/ckplus/data/ck_ali
 
 #### Confusion matrix (%)
   
-| True\Pred| Anger | Contempt|Disgust| Fear | Happy| Sadness| Surprise |
-| :-----: |:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-| Anger | 97.78|    |    |     |     |     | 2.22 |     | 
-| Contempt |      |  100   |     |      |     |     |     |     | 
-| Disgust  |     |     |100 |     |     |     |     |    | 
-| Fear |     |        | 4.00 | 88.00 |      | 4.00  | 4.00 | 
-| Happy  |      |  | 1.45 | | 98.55|  |    | | 
-| Sadness  |     |  3.57  |  |  ||  92.86  | 3.57 | 
-| Surprise  |      |  1.20   |  |  |  1.20  | 1.20  |  96.39 |
+| True\Pred| Anger |Disgust| Fear | Happy| Sadness| Surprise |
+| :-----: |:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
+| Anger | 97.78|    |     |     |     | 2.22 |     | 
+| Disgust  |    |100 |     |     |     |     |    | 
+| Fear |      | 4.00 | 88.00 |      | 4.00  | 4.00 | 
+| Happy  |   | 1.45 | | 98.55|  |    | | 
+| Sadness  | 3.57  |  |  ||  92.86  | 3.57 | 
+| Surprise  |  1.20   |  |  |  1.20  | 1.20  |  96.39 |
 
 <br/>
 
