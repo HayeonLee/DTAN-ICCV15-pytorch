@@ -81,9 +81,9 @@ def search_files(data_path, db_name, detector, fa, new_name):
 #data_path = 'data/cohn-kanade-images'
 #db_name = 'cohn-kanade-images'
 #new_path = data_path.replace(db_name, 'ck_align')
-data_path = '/data/OriginalImg/VL/Strong'
-db_name = 'OriginalImg/VL/Strong'
-new_name = 'oulu_align2'
+data_path = '/data/OriginalImg/NI/Strong'
+db_name = 'OriginalImg/NI/Strong'
+new_name = 'oulu_align_ni'
 
 if not os.path.exists(data_path.replace(db_name, new_name)):
   os.makedirs(data_path.replace(db_name, new_name))

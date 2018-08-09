@@ -33,6 +33,7 @@ def search_files(emtn_dir, image_dir, dir_name=None, dataset=None):
                     full_dirname, _ = os.path.split(full_filename) #ex. Emotion/S005/001
                     #ex. cohn-kanade-images/S005/001
                     dataset.append([label, full_dirname.replace(emtn_dir, image_dir)]) #ex. cohn-kanade-images/S005/001
+                    break
     except PermissionError:
         pass
     return dataset
@@ -61,6 +62,7 @@ def search_files_oulu(image_dir, dir_name=None, dataset=None):
                 emt = os.path.split(dir_name)[-1]
                 label = emotion[emt]
                 dataset.append([label, dir_name]) #ex. cohn-kanade-images/S005/001
+                break
     except PermissionError:
         pass
     return dataset
@@ -84,13 +86,15 @@ def get_data_list(emtn_dir, image_dir, num_cls, k, ith_fold):
     Return train data list, test data list
     Type: [[label, path of image], ...]
     '''
-    print(num_cls)
+    # print(num_cls)
     if num_cls == 7:
         dataset = search_files(emtn_dir, image_dir)
     else:
         dataset = search_files_oulu(image_dir)
     random.seed('1234')
     random.shuffle(dataset)
+    print("dataset:{}".format(len(dataset)))
+
 
     #emtns[i]: dir paths of each image of i-th emotion type ex. '/data/cohn-kanade-images/S014/003'
     emtns = [[] for i in range(num_cls)]
