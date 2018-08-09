@@ -32,7 +32,6 @@ class Solver(object):
         self.model_name = config.model_name
         self.ithfold = config.ithfold
         self.restore= config.restore
-        self.dict = ['anger', 'contempt', 'disgust', 'fear', 'happy', 'sadness', 'surprise']
         self.model_save_from = config.model_save_from
         self.num_data = num_data
         self.use_visdom = config.use_visdom
@@ -41,6 +40,11 @@ class Solver(object):
         self.weight_decay = config.weight_decay
         self.nest = config.nest
         self.mode = config.mode
+        if self.cls == 7:
+            self.dict = ['anger', 'contempt', 'disgust', 'fear', 'happy', 'sadness', 'surprise']
+        else:
+            self.dict = ['anger', 'disgust', 'fear', 'happy', 'sadness', 'surprise']
+
 
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -71,7 +75,7 @@ class Solver(object):
     def build_model(self):
         # Restore model or
         # Create model
-        self.model = DTAN(self.image_size, in_ch=3, out_ch=64, num_block=2)
+        self.model = DTAN(self.image_size, in_ch=3, out_ch=64, num_block=2, num_cls=self.cls)
         # Create optimizer
         self.optimizer = optim.SGD(self.model.parameters(), self.lr, momentum=self.momentum, weight_decay=self.weight_decay, nesterov=self.nest) #momentum=0.9, weight_decay=0.0001
         # Create loss function
@@ -113,28 +117,42 @@ class Solver(object):
         torch.save(self.model.state_dict(), save_path)
         print('Save model checkpoints into {}...'.format(os.path.join(self.model_path, 'checkpoint')))
 
-    def save_results(self, images, labels, output_indice, ith, mode='train', best_valid_acc=0):
+    def save_images(self, images, labels, output_indice, ith, k, best_valid_acc):
         plt.clf()
         fig, ax = plt.subplots(6, 6)
-        nrow = int(images.size(0)/6)
-
+        nrow = int(images.size(0) / 6)
         for i in range(nrow):
             for j in range(6):
                 ax[i][j].imshow(np.transpose(self.denorm(images[6*i + j]).numpy(), (1,2,0)))
                 ax[i][j].axis('off')
                 ax[i][j].set_title('T:{}  P:{}'.format(self.dict[labels[6*i + j]], self.dict[output_indice[6*i + j]]))
                 ax[i][j].axis('off')
-        for j in range(images.size(0)%6):
+        for j in range(images.size(0) % 6):
             ax[nrow][j].imshow(np.transpose(self.denorm(images[6*nrow + j]).numpy(), (1,2,0)))
             ax[nrow][j].axis('off')
             ax[nrow][j].set_title('T:{}  P:{}'.format(self.dict[labels[6*nrow + j]], self.dict[output_indice[6*nrow + j]]))
             ax[nrow][j].axis('off')
-        if mode == 'train':
-            plt.savefig(os.path.join(self.model_path, 'results', '{:6d}-{}-{}_fold-acc_{:d}'.format(ith, mode, self.ithfold, best_valid_acc)))
-        else:
-            plt.savefig(os.path.join(self.model_path, 'results', '{:6d}-{}-{}_fold-acc{:d}'.format(ith, mode, self.ithfold, int(best_valid_acc.item()))))
+        # if mode == 'train':
+        # plt.savefig(os.path.join(self.model_path, 'results', '{:6d}-{}-fold-{:d}-acc-{:d}'.format(ith, self.ithfold, k, best_valid_acc)))
+        # else:
+        plt.savefig(os.path.join(self.model_path, 'results', '{:6d}-{}-fold-{:d}-acc{:d}'.format(ith, self.ithfold, k, int(best_valid_acc.item()))))
         plt.close()
-        print('save image... in {}'.format(os.path.join(self.model_path, 'results')))
+        print('save {} th image... in {}'.format(k, os.path.join(self.model_path, 'results')))
+
+
+    # def set_ax(self, ax, i, j, img, label, pred):
+    #     ax[i][j].imshow(np.transpose(self.denorm(img).numpy(), (1,2,0)))
+    #     ax[i][j].axis('off')
+    #     ax[i][j].set_title('T:{}  P:{}'.format(self.dict[label], self.dict[pred]))
+    #     ax[i][j].axis('off')
+    #     # return ax
+
+    def save_results(self, images, labels, output_indice, ith, mode='train', best_valid_acc=0):
+        qu = int(images.size(0) / 36)
+        for k in range(qu):
+            self.save_images(images[k*36:(k+1)*36], labels[k*36:(k+1)*36], output_indice[k*36:(k+1)*36], ith, k, best_valid_acc)
+        if images.size(0) % 36:
+            self.save_images(images[qu*36:], labels[qu*36:], output_indice[qu*36:], ith, qu, best_valid_acc)
 
     def train(self):
 
@@ -173,7 +191,7 @@ class Solver(object):
                 # Print logs
                 if (j+1) % self.log_step == 0:
                     print('iteration:[{}/{}], epoch:[{}], loss:[{:.4f}], lr:[{}], best train acc:[{:.4f}], best valid acc:[{:.4f}]'.format(
-                           (i+1)*self.batch_size, self.max_epoch * self.batch_size * iters , i, loss, self.lr, best_acc, best_valid_acc))
+                           i * iters +  (j+1)*self.batch_size, self.max_epoch * self.batch_size * iters , i, loss, self.lr, best_acc, best_valid_acc))
                     # self.save_results(img_seqs.cpu(), label.cpu(), output_index.cpu(), j)
 
             if (i+1) % self.acc_step == 0:
@@ -242,14 +260,4 @@ class Solver(object):
         if self.mode == 'valid':
             print('{}th fold accuarcy: {}'.format(self.ithfold, valid_acc))
         return valid_acc, mean_loss
-
-
-
-
-
-
-
-
-
-
 

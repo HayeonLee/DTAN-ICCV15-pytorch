@@ -33,8 +33,7 @@ def main(config):
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()
-  parser.add_argument('--main_path', type=str, default='/data/hylee-fer', help='main path to save
-          model and results')
+  parser.add_argument('--main_path', type=str, default='/data/hylee-fer', help='main path to save model and results')
   parser.add_argument('--emotion_dir', type=str, default='/data/Emotion', help='emotion data directory.')
   parser.add_argument('--image_dir', type=str, default='/data/cohn-kanade-images_processed', help='image data directory')
   parser.add_argument('--batch_size',type=int, default=32, help='number of sequences to train on in parallel')

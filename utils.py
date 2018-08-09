@@ -37,6 +37,35 @@ def search_files(emtn_dir, image_dir, dir_name=None, dataset=None):
         pass
     return dataset
 
+def search_files_oulu(image_dir, dir_name=None, dataset=None):
+    '''
+    1. Recursively search Emotion folder to find emotion labels
+        ex) 6.0000000e+00 (position: Emotion/S005/001/S005_001_00000011_emotion.txt)
+    2. Find image directory name corresponding to each emotion direcotry name
+        ex) cohn-kanade-images/S005/001/S005_001_00000011.png
+    3. Append [label, image directory name] to self.dataset
+    '''
+    if dir_name is None:
+        dir_name = image_dir
+    if dataset is None:
+        dataset = []
+    emotion = {'Anger': 0, 'Disgust': 1, 'Fear': 2, 'Happiness': 3, 'Sadness': 4, 'Surprise':5}
+
+    try:
+        filenames = os.listdir(dir_name) #oulu_align
+        for filename in filenames: #ex. P001
+            full_filename = os.path.join(dir_name, filename) #oulu_align/P001
+            if os.path.isdir(full_filename):
+                search_files_oulu(image_dir, full_filename, dataset)
+            else:
+                emt = os.path.split(dir_name)[-1]
+                label = emotion[emt]
+                dataset.append([label, dir_name]) #ex. cohn-kanade-images/S005/001
+    except PermissionError:
+        pass
+    return dataset
+
+
 def count_data_per_cls(emtns):
     num_data = []
     total = 0
@@ -47,29 +76,6 @@ def count_data_per_cls(emtns):
     num_data = total / np.array(num_data)
     return num_data
 
-# def oversample(train_list, num_cls):
-#     # oversample data for each class so that all classes have the same number of data
-#     train_list = sorted(train_list)
-#     num_data = np.zeros(num_cls)
-#     for sample in train_list:
-#         num_data[sample[0]] += 1
-
-#     oversampled = []
-#     max_num = max(num_data)
-#     for i in range(num_cls):
-#         num_sample = int(max_num - num_data[i])
-#         for j in range(num_sample):
-#             k = random.randint(sum(num_data[:i]), sum(num_data[:i]) + num_data[i] - 1)
-#             oversampled.append(train_list[k])
-#     train_list += oversampled
-#     random.shuffle(train_list)
-#     #for print
-#     num_data = np.zeros(num_cls)
-#     for sample in train_list:
-#         num_data[sample[0]] += 1
-#     print('num_data:{}'.format(num_data))
-#     return train_list
-
 def get_data_list(emtn_dir, image_dir, num_cls, k, ith_fold):
     '''
     Divide dataset as k fold list
@@ -78,7 +84,11 @@ def get_data_list(emtn_dir, image_dir, num_cls, k, ith_fold):
     Return train data list, test data list
     Type: [[label, path of image], ...]
     '''
-    dataset = search_files(emtn_dir, image_dir)
+    print(num_cls)
+    if num_cls == 7:
+        dataset = search_files(emtn_dir, image_dir)
+    else:
+        dataset = search_files_oulu(image_dir)
     random.seed('1234')
     random.shuffle(dataset)
 
@@ -109,3 +119,27 @@ def get_data_list(emtn_dir, image_dir, num_cls, k, ith_fold):
             train_list += k_folds[i]
     # train_list = oversample(train_list, num_cls)
     return train_list, test_list, num_data
+
+
+# def oversample(train_list, num_cls):
+#     # oversample data for each class so that all classes have the same number of data
+#     train_list = sorted(train_list)
+#     num_data = np.zeros(num_cls)
+#     for sample in train_list:
+#         num_data[sample[0]] += 1
+
+#     oversampled = []
+#     max_num = max(num_data)
+#     for i in range(num_cls):
+#         num_sample = int(max_num - num_data[i])
+#         for j in range(num_sample):
+#             k = random.randint(sum(num_data[:i]), sum(num_data[:i]) + num_data[i] - 1)
+#             oversampled.append(train_list[k])
+#     train_list += oversampled
+#     random.shuffle(train_list)
+#     #for print
+#     num_data = np.zeros(num_cls)
+#     for sample in train_list:
+#         num_data[sample[0]] += 1
+#     print('num_data:{}'.format(num_data))
+#     return train_list

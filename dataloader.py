@@ -9,7 +9,7 @@ from torchvision import transforms as T
 from torchvision.transforms import functional as TF
 from utils import get_data_list
 
-class CKplus(data.Dataset):
+class Dataset(data.Dataset):
     def __init__(self, data_list, transform, mode):
         '''
         1. Under Emotion directory, read all emotion file name
@@ -26,6 +26,8 @@ class CKplus(data.Dataset):
     def __getitem__(self, index):
         label, img_dirname = self.dataset[index]
         filenames = sorted(os.listdir(img_dirname))
+        if len(filenames) < 3:
+            print(img_dirname)
         degree = np.random.randint(-20, 20)
         seed = np.random.randint(2147483647) # make a seed with numpy generator
 
@@ -70,14 +72,10 @@ def get_loader(config):
     transform_valid.append(T.Normalize(mean=(0.5,0.5,0.5), std=(0.5,0.5,0.5)))
     transform_valid = T.Compose(transform_valid)
 
-    if config.dataset_name == 'ckplus':
-        print('CKplus dataset for train and validation are created...')
-        train_dataset = CKplus(train_list, transform, config.mode)
-        valid_dataset = CKplus(valid_list, transform_valid, 'valid')
-    elif config.dataset_name == 'oulu':
-        # train_dataset = Oulu(train_list, transform, config.video_normal)
-        # valid_dataset = Oulu(valid_list, transform_valid, config.video_normal)
-        print('Oulu dataset for train and validation are created...')
+    # if config.dataset_name == 'Dataset':
+    #     print('Dataset dataset for train and validation are created...')
+    train_dataset = Dataset(train_list, transform, config.mode)
+    valid_dataset = Dataset(valid_list, transform_valid, 'valid')
 
     if config.mode == 'train':
         print('The number of train_dataset(before augmentation): {} '.format(len(train_dataset)))

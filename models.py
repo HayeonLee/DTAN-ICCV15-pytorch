@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 
 class DTAN(nn.Module):
-	def __init__(self, img_size, in_ch, out_ch, num_block=2):
+	def __init__(self, img_size, in_ch, out_ch, num_block=2, num_cls=7):
 		super(DTAN, self).__init__()
 		layers = []
 		for i in range(num_block):
@@ -14,7 +14,7 @@ class DTAN(nn.Module):
 			in_ch = out_ch
 		self.cnns = nn.Sequential(*layers)
 		self.fc1 = nn.Linear(pow((img_size / pow(2, num_block)), 2) * out_ch, 500)
-		self.fc2 = nn.Linear(500, 7)
+		self.fc2 = nn.Linear(500, num_cls)
 
 	def forward(self, x):
 		x = self.cnns(x)
