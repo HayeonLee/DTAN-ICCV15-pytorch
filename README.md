@@ -1,5 +1,5 @@
 ## Face age classification
-PyTorch implementation of [DTGN](https://ieeexplore.ieee.org/document/7410698/) to recognize face expression on dataset CK+
+PyTorch implementation of [DTGN](https://ieeexplore.ieee.org/document/7410698/) to recognize face expression on dataset CK+, Oulu-CASIA
 
 <br/>
 
@@ -22,6 +22,7 @@ $ cd fer
 <br/>
 
 ### 2. Downloading & Preprocessing the dataset
+#### CK+
 (1) Download [Cohn-Kanade (CK+) dataset](http://www.consortium.ri.cmu.edu/ckagree/) <br/>
 (2) Move *cohn-kanade-images* directory to *fer/data/cohn-kanade-images* <br/>
 ```bash
@@ -38,11 +39,23 @@ $ python preprocessing/face_alignment.py
 *ck_align* directory will be generated under *data* folder
 
 <br/>
-
-### 3. Downloading pretrained model
-Download [the pretrained model checkpoint](https://drive.google.com/open?id=1F8zDsrGumdPHJdrZvEvPxM2A1qUCatGJ) to test the model as 10 cross-fold validation
+#### Oulu-Casia
+(1) Download [Oulu-CASIA dataset](http://www.cse.oulu.fi/CMV/Downloads/Oulu-CASIA) <br/>
+(2) Move *OriginalImg* directory to *fer/data/OriginalImg* <br/>
 ```bash
-$ unzip ckplus -d fer/ckplus
+$ mv OriginalImg fer/data/OriginalImg
+```
+(3) Perform preprocessing to crop and align images
+```bash
+$ python preprocessing/face_alignment.py
+```
+*oulu_align* directory will be generated under *data* folder
+
+<br/>
+### 3. Downloading pretrained model
+Download [the pretrained model checkpoint](https://drive.google.com/open?id=1OlHBYWyiiKah66G8c-ap0ni4Mc4Fsys4) to test the model as 10 cross-fold validation
+```bash
+$ unzip oulu -d fer/oulu
 ```
 
 <br/>
