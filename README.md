@@ -1,5 +1,5 @@
 ## Face age classification
-PyTorch implementation of [DTGN(ICCV2015)](https://ieeexplore.ieee.org/document/7410698/) to recognize face expression on dataset CK+
+PyTorch implementation of [DTGN](https://ieeexplore.ieee.org/document/7410698/) to recognize face expression on dataset CK+
 
 <br/>
 
