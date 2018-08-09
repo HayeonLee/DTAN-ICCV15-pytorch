@@ -75,7 +75,7 @@ $ python main.py --mode train --main_path fer --image_dir fer/ckplus/data/ck_ali
 ### CK+ Dataset
 #### Accuracy (%)
   
-| fold    | 0     | 1      | 2     | 3     | 4     | 5     | 6     | 7     | 8     | 9     | mean    |DTAGN(author)|
+| fold    | 0     | 1      | 2     | 3     | 4     | 5     | 6     | 7     | 8     | 9     | mean    |author|
 | :----: |:----:| :----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|-----:|:----:|
 | acc  | 94.29 |  100   | 97.14 | 100   |  100  |  100  |  100  | 90.63 | 86.67 |  100  |  96.87  |97.25|
 
@@ -103,7 +103,7 @@ $ python main.py --mode train --main_path fer --image_dir fer/ckplus/data/ck_ali
 ### Oulu-Casia Dataset
 #### Accuracy (%)
   
-| fold    | 0     | 1      | 2     | 3     | 4     | 5     | 6     | 7     | 8     | 9     | mean     |DTAGN(author)|
+| fold    | 0     | 1      | 2     | 3     | 4     | 5     | 6     | 7     | 8     | 9     | mean     |author|
 | :-----: |:-----:| :-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
 | acc  | 87.5 |  79.16  | 75 | 89.58  |  85.42  |  81.25  |  83.33  | 83.33 | 81.25 |  81.25  | 82.67 | 81.46 |
 
