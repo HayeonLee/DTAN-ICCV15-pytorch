@@ -113,8 +113,8 @@ $ python main.py --mode train --main_path fer --image_dir fer/ckplus/data/ck_ali
   
 | True\Pred| Anger |Disgust| Fear | Happy| Sadness| Surprise |
 | :-----: |:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-| Anger | 80| 13.75   |     |     |     | 6.25 |     | 
-| Disgust  |  17.5  |71.25 |   5  |     |     |  6.25   |    | 
+| Anger | 80| 13.75   |     |     | 6.25    |  |   
+| Disgust  |  17.5  |71.25 |   5  |     | 6.25     |    |  
 | Fear |      | 1.25 | 88.75 |   1.25   | 2.5  | 6.25 | 
 | Happy  | 1.25  | 1.25 |7.5 | 90.00|  |    | | 
 | Sadness  | 10 | 2.5 | 6.25 ||  81.25  |  | 
