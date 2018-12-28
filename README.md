@@ -21,12 +21,19 @@ $ cd fer
 
 <br/>
 
+### 1.5. Install packages
+```bash
+$ pip install -r requirements.txt
+```
+
+<br/>
+
 ### 2. Downloading & Preprocessing the dataset
 #### CK+
-(1) Get [Cohn-Kanade (CK+) dataset](http://www.consortium.ri.cmu.edu/ckagree/) link <br/>
-(2) Download CK+/extended-cohn-kanade-images.zip
-(3) Download CK+/Emotion_labels.zip
-(4) unzip (2), (3) files
+(1) Get [Cohn-Kanade (CK+) dataset](http://www.consortium.ri.cmu.edu/ckagree/) link \
+(2) Download CK+/extended-cohn-kanade-images.zip \
+(3) Download CK+/Emotion_labels.zip \
+(4) unzip (2), (3) files \
 (5) Move *cohn-kanade-images* directory to *fer/data/cohn-kanade-images* <br/>
 ```bash
 $ mv cohn-kanade-images fer/data/cohn-kanade-images
