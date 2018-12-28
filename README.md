@@ -4,9 +4,9 @@ PyTorch implementation of [DTGN](https://ieeexplore.ieee.org/document/7410698/) 
 <br/>
 
 ## Dependencies
-* [Python 3.5+](https://www.continuum.io/downloads)
+* [Python 3.6](https://www.continuum.io/downloads)
 * [PyTorch 0.4.0](http://pytorch.org/)
-* [Visdom](https://github.com/facebookresearch/visdom)
+* [Visdom](https://github.com/facebookresearch/visdom) (option)
 * [OpenCV](https://opencv.org/)
 
 <br/>
@@ -23,16 +23,19 @@ $ cd fer
 
 ### 2. Downloading & Preprocessing the dataset
 #### CK+
-(1) Download [Cohn-Kanade (CK+) dataset](http://www.consortium.ri.cmu.edu/ckagree/) <br/>
-(2) Move *cohn-kanade-images* directory to *fer/data/cohn-kanade-images* <br/>
+(1) Get [Cohn-Kanade (CK+) dataset](http://www.consortium.ri.cmu.edu/ckagree/) link <br/>
+(2) Download CK+/extended-cohn-kanade-images.zip
+(3) Download CK+/Emotion_labels.zip
+(4) unzip (2), (3) files
+(5) Move *cohn-kanade-images* directory to *fer/data/cohn-kanade-images* <br/>
 ```bash
 $ mv cohn-kanade-images fer/data/cohn-kanade-images
 ```
-(3) Move *Emotion* directory to *fer/data/Emotion* <br/>
+(6) Move *Emotion* directory to *fer/data/Emotion* <br/>
 ```bash
 $ mv Emotion fer/data/Emotion
 ```
-(4) Perform preprocessing to crop and align images
+(7) Perform preprocessing to crop and align images
 ```bash
 $ python preprocessing/face_alignment.py
 ```
