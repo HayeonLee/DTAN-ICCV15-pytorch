@@ -42,6 +42,7 @@ $ mv Emotion data/Emotion
 ```
 (7) Perform preprocessing to crop and align images
 ```bash
+$ find data/cohn-kanade-images/ -name .DS_Store -exec rm -f {} \;
 $ python preprocessing/face_alignment.py --data_path data/cohn-kanade-images \
                                          --db_name cohn-kanade-images \ 
                                          --new_name ck_align
