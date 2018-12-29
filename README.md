@@ -79,7 +79,7 @@ $ unzip ckplus.zip -d models/
 <br/>
 
 #### Oulu-CASIA
-Download [the pretrained model checkpoint](https://drive.google.com/open?id=1OlHBYWyiiKah66G8c-ap0ni4Mc4Fsys4) to test the model as 10 cross-fold validation
+Download [the pretrained model checkpoint](https://drive.google.com/open?id=1OhlCWF7e1zzg7G7vSz28Q63Tq9roVbyz) to test the model as 10 cross-fold validation
 ```bash
 $ unzip oulu.zip -d models/
 ```
@@ -101,10 +101,9 @@ Sample result images will be saved under *fer/models/ckplus/Nthfold/results*
 
 #### Oulu-CASIA
 ```bash
-$ python main.py --mode valid --main_path fer --image_dir fer/oulu/data/oulu_align \
+$ python main.py --mode valid --main_path ./ --image_dir data/oulu_align_ni \
                  --emotion_dir None --cls 6 \
-                 --model_name Nthfold --ithfold N\ 
-                 --crop_size 64 --image_size 64 --batch_size 32 \
+                 --model_name oulu/Nthfold --ithfold N \ 
                  --restore true --use_visdom False
 ```
 
