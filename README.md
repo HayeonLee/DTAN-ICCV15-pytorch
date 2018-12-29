@@ -1,13 +1,11 @@
 ## Face age classification
-PyTorch implementation of [DTGN](https://ieeexplore.ieee.org/document/7410698/) to recognize face expression on dataset CK+, Oulu-CASIA
+PyTorch implementation of [DTAN](https://ieeexplore.ieee.org/document/7410698/) to recognize face expression on dataset CK+, Oulu-CASIA
 
 <br/>
 
 ## Dependencies
 * [Python 3.6](https://www.continuum.io/downloads)
 * [PyTorch 0.4.0](http://pytorch.org/)
-* [Visdom](https://github.com/facebookresearch/visdom) (option)
-* [OpenCV](https://opencv.org/)
 
 <br/>
 
@@ -21,14 +19,14 @@ $ cd fer
 
 <br/>
 
-### 1.5. Install packages
+### 2. Install packages
 ```bash
 $ pip install -r requirements.txt
 ```
 
 <br/>
 
-### 2. Downloading & Preprocessing the dataset
+### 3. Downloading & Preprocessing the dataset
 #### CK+
 (1) Get [Cohn-Kanade (CK+) dataset](http://www.consortium.ri.cmu.edu/ckagree/) link \
 (2) Download CK+/extended-cohn-kanade-images.zip \
@@ -36,15 +34,17 @@ $ pip install -r requirements.txt
 (4) unzip (2), (3) files \
 (5) Move *cohn-kanade-images* directory to *fer/data/cohn-kanade-images* <br/>
 ```bash
-$ mv cohn-kanade-images fer/data/cohn-kanade-images
+$ mv cohn-kanade-images data/cohn-kanade-images
 ```
 (6) Move *Emotion* directory to *fer/data/Emotion* <br/>
 ```bash
-$ mv Emotion fer/data/Emotion
+$ mv Emotion data/Emotion
 ```
 (7) Perform preprocessing to crop and align images
 ```bash
-$ python preprocessing/face_alignment.py
+$ python preprocessing/face_alignment.py --data_path data/cohn-kanade-images \
+                                         --db_name cohn-kanade-images \ 
+                                         --new_name ck_align
 ```
 *ck_align* directory will be generated under *data* folder
 
@@ -68,7 +68,7 @@ $ python preprocessing/face_alignment.py
 #### CK+
 Download [the pretrained model checkpoint](https://drive.google.com/open?id=1F8zDsrGumdPHJdrZvEvPxM2A1qUCatGJ) to test the model as 10 cross-fold validation
 ```bash
-$ unzip oulu -d fer/oulu
+$ unzip ckplus.zip -d models/
 ```
 
 <br/>
@@ -84,14 +84,13 @@ $ unzip oulu -d fer/oulu
 ### 4. Testing
 #### CK+
 ```bash
-$ python main.py --mode valid --main_path fer --image_dir fer/ckplus/data/ck_align \
-                 --emotion_dir fer/ckplus/data/Emotion --cls 7 \
+$ python main.py --mode valid --main_path ./ --image_dir data/ck_align \
+                 --emotion_dir data/Emotion --cls 7 \
                  --model_name Nthfold --ithfold N\ 
-                 --crop_size 64 --image_size 64 --batch_size 32 \
                  --restore true --use_visdom False
 ```
 N: 0~9
-result images will be saved under *fer/ckplus/models/Nthfold/results*
+Sample result images will be saved under *fer/models/ckplus/Nthfold/results*
 
 <br/>
 
