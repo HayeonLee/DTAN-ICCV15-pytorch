@@ -121,11 +121,9 @@ $ python main.py --mode train --main_path ./ --image_dir data/ck_align \
 
 #### Oulu-CASIA
 ```bash
-$ python main.py --mode train --main_path fer --image_dir fer/oulu/data/oulu_align \
+$ python main.py --mode train --main_path ./ --image_dir data/oulu_align_ni \
                  --emotion_dir None --cls 6 \
                  --model_name MODEL_NAME --ithfold N\ 
-                 --crop_size 64 --image_size 64 --batch_size 32 \
-                 --use_visdom True
 ```
 <br/>
 
