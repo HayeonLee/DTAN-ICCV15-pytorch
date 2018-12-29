@@ -52,7 +52,7 @@ $ python preprocessing/face_alignment.py --data_path data/cohn-kanade-images \
 <br/>
 
 #### Oulu-CASIA
-(1) Download [Oulu-CASIA dataset](http://www.cse.oulu.fi/CMV/Downloads/Oulu-CASIA) <br/>
+(1) Download B_OriginalImg.zip of [Oulu-CASIA dataset](http://www.cse.oulu.fi/CMV/Downloads/Oulu-CASIA) <br/>
 (2) Move *OriginalImg* directory to *fer/data/OriginalImg* <br/>
 ```bash
 $ mv OriginalImg fer/data/OriginalImg
