@@ -53,13 +53,17 @@ $ python preprocessing/face_alignment.py --data_path data/cohn-kanade-images \
 
 #### Oulu-CASIA
 (1) Download B_OriginalImg.zip of [Oulu-CASIA dataset](http://www.cse.oulu.fi/CMV/Downloads/Oulu-CASIA) <br/>
-(2) Move *OriginalImg* directory to *fer/data/OriginalImg* <br/>
+(2) Move *OriginalImg* directory to *data/OriginalImg* <br/>
 ```bash
-$ mv OriginalImg fer/data/OriginalImg
+$ unzip B_OriginalImg.zip
+$ mv B_OriginalImg/OriginalImg data/
 ```
 (3) Perform preprocessing to crop and align images
 ```bash
-$ python preprocessing/face_alignment.py
+$ find data/OriginalImg/NI/Strong -name Thumbs.db -exec rm -f {} \;
+$ python preprocessing/face_alignment.py --data_path data/OriginalImg/NI/Strong \
+                                         --db_name OriginalImg/NI/Strong \
+                                         --new_name oulu_align_ni
 ```
 *oulu_align* directory will be generated under *data* folder
 
@@ -77,7 +81,7 @@ $ unzip ckplus.zip -d models/
 #### Oulu-CASIA
 Download [the pretrained model checkpoint](https://drive.google.com/open?id=1OlHBYWyiiKah66G8c-ap0ni4Mc4Fsys4) to test the model as 10 cross-fold validation
 ```bash
-$ unzip oulu -d fer/oulu
+$ unzip oulu.zip -d models/
 ```
 
 <br/>
