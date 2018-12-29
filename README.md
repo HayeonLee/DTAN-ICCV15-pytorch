@@ -109,11 +109,9 @@ $ python main.py --mode valid --main_path fer --image_dir fer/oulu/data/oulu_ali
 ### 5. Training
 #### CK+
 ```bash
-$ python main.py --mode train --main_path fer --image_dir fer/ckplus/data/ck_align \
-                 --emotion_dir fer/ckplus/data/Emotion --cls 7 \
+$ python main.py --mode train --main_path ./ --image_dir data/ck_align \
+                 --emotion_dir data/Emotion --cls 7 \
                  --model_name MODEL_NAME --ithfold N \ 
-                 --crop_size 64 --image_size 64 --batch_size 32 \
-                 --use_visdom True
 ```
 
 <br/>
