@@ -66,7 +66,7 @@ $ python preprocessing/face_alignment.py
 
 ### 3. Downloading pretrained model
 #### CK+
-Download [the pretrained model checkpoint](https://drive.google.com/open?id=1F8zDsrGumdPHJdrZvEvPxM2A1qUCatGJ) to test the model as 10 cross-fold validation
+Download [the pretrained model checkpoint](https://drive.google.com/open?id=1_9CBiHx8ZG0Rk7ZYVPcFliktTeYcdjQP) to test the model as 10 cross-fold validation
 ```bash
 $ unzip ckplus.zip -d models/
 ```
