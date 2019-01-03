@@ -1,4 +1,4 @@
-## Face age classification
+## Face Expression Recognition
 PyTorch implementation of [DTAN](https://ieeexplore.ieee.org/document/7410698/) to recognize face expression on dataset CK+, Oulu-CASIA
 
 <br/>
